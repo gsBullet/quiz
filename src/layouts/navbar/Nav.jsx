@@ -35,11 +35,23 @@ const Nav = () => {
               </li>
             )}
             {isAuth.checkAuth ? (
-              <li className="nav-item list-unstyled">
-                <a className="nav-link " href="/#quiz">
-                  Quiz
-                </a>
-              </li>
+              <>
+                <li className="nav-item list-unstyled">
+                  <a className="nav-link " href="/#quiz">
+                    Quiz
+                  </a>
+                </li>
+
+                <li className="nav-item list-unstyled">
+                  <a className="nav-link " href="/#written">
+                    written
+                  </a>
+                </li><li className="nav-item list-unstyled">
+                  <a className="nav-link " href="/#file-uploader">
+                    file uploader
+                  </a>
+                </li>
+              </>
             ) : (
               <li className="nav-item list-unstyled">
                 <a className="nav-link " href="/#">
