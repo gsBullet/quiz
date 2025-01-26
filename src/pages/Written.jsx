@@ -4,6 +4,7 @@ import quizURL from "../api/quizURL";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import quizSubmitURL from "../api/quizSubmitURL";
+import SweetAlert from "../components/SweetAlert";
 
 const Written = () => {
   const { isAuth } = useContext(AuthContext);
@@ -44,8 +45,16 @@ const Written = () => {
       const response = await axios.post(`${quizSubmitURL}/written`, formData);
 
       if (response.status === 200) {
-        console.log("Quiz submitted successfully");
-        console.error("Error submitting quiz:", response.data.message);
+        e.target.reset();
+        SweetAlert({
+          icon: "success",
+          message: response.data.message,
+        });
+      } else {
+        SweetAlert({
+          icon: "error",
+          message: response.data.message,
+        });
       }
     } catch (error) {
       console.error("Submission failed:", error);
@@ -90,7 +99,9 @@ const Written = () => {
                     </div>
                   ))}
                   <div className="text-end me-3">
-                    <button className="btn btn-primary">Submit</button>
+                    <button className="btn btn-primary">
+                      Submit Your Written Paper
+                    </button>
                   </div>
                 </div>
               </form>

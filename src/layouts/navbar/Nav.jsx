@@ -46,9 +46,16 @@ const Nav = () => {
                   <a className="nav-link " href="/#written">
                     written
                   </a>
-                </li><li className="nav-item list-unstyled">
+                </li>
+                {/* <li className="nav-item list-unstyled">
                   <a className="nav-link " href="/#file-uploader">
                     file uploader
+                  </a>
+                </li> */}
+
+                <li className="nav-item list-unstyled">
+                  <a className="nav-link " href="/#written-mark">
+                    Written Mark
                   </a>
                 </li>
               </>

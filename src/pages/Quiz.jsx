@@ -65,6 +65,7 @@ const Quiz = () => {
         const response = await axios.post(`${quizURL}/quiz-by-branch-class`, {
           branch_id: 1,
           class: "3",
+          question_type: "quiz",
         });
         // console.log(response);
 
@@ -84,7 +85,7 @@ const Quiz = () => {
       user_answer: answer,
       branch_id: 1,
       class: "3",
-      student_id: 5,
+      student_id: 1,
       is_pass: false,
       total_question_answer: answer.length,
       given_admission_date: new Date(),
@@ -96,8 +97,6 @@ const Quiz = () => {
     } else {
       console.error("Error submitting quiz:", response.data.message);
     }
-
-    console.log("Form submitted");
   };
   return (
     <>

@@ -9,7 +9,8 @@ import Quiz from "./pages/Quiz";
 import AuthContextProvider from "./context/AuthContext";
 import Result from "./pages/Result";
 import Written from "./pages/Written";
-import FileUploader from "./pages/FileUploader";
+// import FileUploader from "./pages/FileUploader";
+import WrittenMark from "./pages/WrittenMark";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
               <Route index element={<Home />} />
               <Route path="quiz" element={<Quiz />} />
               <Route path="written" element={<Written />} />
-              <Route path="file-uploader" element={<FileUploader />} />
+              <Route path="written-mark" element={<WrittenMark />} />
+              {/* <Route path="file-uploader" element={<FileUploader />} /> */}
               <Route path="login" element={<Login />} />
               <Route path="result" element={<Result />} />
               <Route path="about" element={<About />} />

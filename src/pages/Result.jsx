@@ -83,7 +83,7 @@ const Result = () => {
   };
 
   return (
-    <div className="coantiner">
+    <div className="container">
       <div className="card">
         <div className="card-header">
           <h2>result</h2>
@@ -99,7 +99,7 @@ const Result = () => {
           </div>
         </div>
         <div className="card-body">
-          <table className="table table-bordered">
+          <table className="table table-bordered table-responsive table-hover table-striped">
             <thead>
               <tr>
                 <th>No</th>
@@ -107,10 +107,12 @@ const Result = () => {
                 <th>Student Name</th>
                 <th>Branch</th>
                 <th>Class</th>
-                <th>Total questions</th>
-                <th>Correct answers</th>
-                <th>Wrong answers</th>
-                <th>Marks</th>
+                <th>Total Quiz</th>
+                <th>Correct Quiz</th>
+                <th>Wrong Quiz</th>
+                <th>Quiz Marks</th>
+                <th>Written Marks</th>
+                <th>Total Marks</th>
                 <th>Percentage</th>
                 {/* <th>Date</th> */}
                 <th>Status</th>
@@ -118,7 +120,7 @@ const Result = () => {
             </thead>
             <tbody>
               {/* Sample data */}
-              {result.map((item, index) => (
+              {result?.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>{item.student_id}</td>
@@ -129,17 +131,27 @@ const Result = () => {
                   <td>{item.correct_answer}</td>
                   <td>{item.wrong_answer}</td>
                   <td>
-                    {item.marks}/{item.total_marks}
+                    {item.quiz_mark}/{item.total_quiz_marks}
+                  </td>
+                  <td>
+                    {item.written_mark}/{item.total_written_marks}
+                  </td>
+                  <td>
+                    {item.quiz_mark + item.written_mark}/{item.total_marks}
                   </td>
                   <td>
                     {Math.ceil(
-                      (item.correct_answer / item.question_answer) * 100
+                      ((item.quiz_mark + item.written_mark) /
+                        item.total_marks) *
+                        100
                     )}
                   </td>
                   {/* <td>{item.given_admission_date}</td> */}
                   <td>
                     {Math.ceil(
-                      (item.correct_answer / item.question_answer) * 100
+                      ((item.quiz_mark + item.written_mark) /
+                        item.total_marks) *
+                        100
                     ) > 70
                       ? "Pass"
                       : "Fail"}
