@@ -99,67 +99,69 @@ const Result = () => {
           </div>
         </div>
         <div className="card-body">
-          <table className="table table-bordered table-responsive table-hover table-striped">
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Student id</th>
-                <th>Student Name</th>
-                <th>Branch</th>
-                <th>Class</th>
-                <th>Total Quiz</th>
-                <th>Correct Quiz</th>
-                <th>Wrong Quiz</th>
-                <th>Quiz Marks</th>
-                <th>Written Marks</th>
-                <th>Total Marks</th>
-                <th>Percentage</th>
-                {/* <th>Date</th> */}
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {/* Sample data */}
-              {result?.map((item, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{item.student_id}</td>
-                  <td>{item.student_name}</td>
-                  <td>{item.branch_id}</td>
-                  <td>{item.class}</td>
-                  <td>{item.question_answer}</td>
-                  <td>{item.correct_answer}</td>
-                  <td>{item.wrong_answer}</td>
-                  <td>
-                    {item.quiz_mark}/{item.total_quiz_marks}
-                  </td>
-                  <td>
-                    {item.written_mark}/{item.total_written_marks}
-                  </td>
-                  <td>
-                    {item.quiz_mark + item.written_mark}/{item.total_marks}
-                  </td>
-                  <td>
-                    {Math.ceil(
-                      ((item.quiz_mark + item.written_mark) /
-                        item.total_marks) *
-                        100
-                    )}
-                  </td>
-                  {/* <td>{item.given_admission_date}</td> */}
-                  <td>
-                    {Math.ceil(
-                      ((item.quiz_mark + item.written_mark) /
-                        item.total_marks) *
-                        100
-                    ) > 70
-                      ? "Pass"
-                      : "Fail"}
-                  </td>
+          <div className="overflow-x-scroll table-responsive ">
+            <table className="table table-bordered table-hover ">
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Student id</th>
+                  <th>Student Name</th>
+                  <th>Branch</th>
+                  <th>Class</th>
+                  <th>Total Quiz</th>
+                  <th>Correct Quiz</th>
+                  <th>Wrong Quiz</th>
+                  <th>Quiz Marks</th>
+                  <th>Written Marks</th>
+                  <th>Total Marks</th>
+                  <th>Percentage</th>
+                  {/* <th>Date</th> */}
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {/* Sample data */}
+                {result?.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{item.student_id}</td>
+                    <td>{item.student_name}</td>
+                    <td>{item.branch_id}</td>
+                    <td>{item.class}</td>
+                    <td>{item.question_answer}</td>
+                    <td>{item.correct_answer}</td>
+                    <td>{item.wrong_answer}</td>
+                    <td>
+                      {item.quiz_mark}/{item.total_quiz_marks}
+                    </td>
+                    <td>
+                      {item.written_mark}/{item.total_written_marks}
+                    </td>
+                    <td>
+                      {item.quiz_mark + item.written_mark}/{item.total_marks}
+                    </td>
+                    <td>
+                      {Math.ceil(
+                        ((item.quiz_mark + item.written_mark) /
+                          item.total_marks) *
+                          100
+                      )}
+                    </td>
+                    {/* <td>{item.given_admission_date}</td> */}
+                    <td>
+                      {Math.ceil(
+                        ((item.quiz_mark + item.written_mark) /
+                          item.total_marks) *
+                          100
+                      ) > item?.passMark
+                        ? "Pass"
+                        : "Fail"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>

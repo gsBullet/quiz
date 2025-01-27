@@ -4,6 +4,7 @@ import quizURL from "../api/quizURL";
 import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import quizSubmitURL from "../api/quizSubmitURL";
+import SweetAlert from "../components/SweetAlert";
 
 const Quiz = () => {
   const { isAuth } = useContext(AuthContext);
@@ -64,7 +65,7 @@ const Quiz = () => {
       try {
         const response = await axios.post(`${quizURL}/quiz-by-branch-class`, {
           branch_id: 1,
-          class: "3",
+          class: "4",
           question_type: "quiz",
         });
         // console.log(response);
@@ -84,16 +85,20 @@ const Quiz = () => {
     const response = await axios.post(`${quizSubmitURL}/store`, {
       user_answer: answer,
       branch_id: 1,
-      class: "3",
-      student_id: 1,
+      class: "4",
+      student_id: 3,
       is_pass: false,
       total_question_answer: answer.length,
       given_admission_date: new Date(),
       comment: "",
     });
     if (response.status === 200) {
-      console.log("Quiz submitted successfully");
-      // navigate("/result");
+      SweetAlert({
+        icon: "success",
+        message: "Quiz submitted successfully",
+      });
+      e.target.reset();
+      navigate("/");
     } else {
       console.error("Error submitting quiz:", response.data.message);
     }
